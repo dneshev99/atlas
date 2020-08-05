@@ -1,0 +1,26 @@
+<vlayout viewModel="@id('vm') @init('bg.neshev.atlas.vm.BaseManagementVM')" height="100%" width="100%" style="overflow:auto;">
+        <button label="Добави бази" onClick="@command('showBases')"/>
+        <button label="Изчисти" onClick="@command('clearMap')"/>
+        <button label="Добави пътища" onClick="@command('showPaths')"/>
+        <listbox model="@load(vm.basesList)" >
+                <listhead>
+                        <listheader/>
+                </listhead>
+                <template name="model" var="base">
+                        <listitem>
+                                <listcell>
+                                        <vlayout>
+                                                <label value="Ширина"/>
+                                                <textbox value="@bind(base.lat)"/>
+                                                <label value="Дължина"/>
+                                                <textbox value="@bind(base.lng)"/>
+                                                <label value="Име"/>
+                                                <textbox value="@bind(base.name)"/>
+                                                <button label="Покажи на картата" onClick="@command('zoomOnMarker', base=base)"/>
+                                        </vlayout>
+                                        <space height="20pt"/>
+                                </listcell>
+                        </listitem>
+                </template>
+        </listbox>
+</vlayout>

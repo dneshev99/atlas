@@ -1,0 +1,61 @@
+<?page title="Atlas" contentType="text/html;charset=UTF-8"?>
+
+<zk>
+    <!-- LEAFLET-->
+    <script type="text/javascript" src="../js/leaflet/leaflet.js"/>
+    <script type="text/javascript" src="../js/leaflet/leaflet.draw.js"/>
+
+    <style src="../leaflet.draw.css"/>
+    <style src="../leaflet.css"/>
+
+    <!-- INCLUDE CUSTOM SCRIPTS -->
+    <script type="text/javascript" src="../js/dispatcher.js"/>
+    <script type="text/javascript" src="../js/map.js"/>
+
+    <!-- Dont move this to the .css file. ZK's priorities... -->
+    <style>
+        body, .z-panel, .z-panel-body, .z-panelchildren, .z-window, .z-north, .z-south, .z-east, .z-west, .z-center,
+        .z-north-body, .z-south-body, .z-east-body, .z-west-body, .z-center-body,
+        .z-north-collapsed, .z-south-collapsed, .z-east-collapsed, .z-west-collapsed, .z-center-collapsed {
+        padding: 0;
+        }
+
+        .z-west-splitter, .z-west-splitter-button {
+        width: 3px;
+        }
+
+        .z-west-icon {
+        display: none;
+        }
+    </style>
+
+    <borderlayout viewModel="@id('vm') @init('bg.neshev.atlas.vm.IndexVM')" height="100%" width="100%">
+
+        <north height="27pt">
+            <include src="~./zul/header.zul"/>
+        </north>
+
+        <west id="west" width="400pt" splittable="false">
+            <include src="~./zul/baseManagement.zul"/>
+        </west>
+
+        <center border="none">
+            <panel height="100%" width="100%">
+                <panelchildren>
+                    <div height="100%" width="100%">
+                        <include src="~./zul/map.zul"/>
+                    </div>
+                </panelchildren>
+            </panel>
+        </center>
+
+    </borderlayout>
+
+<!--    <script type="text/javascript" defer="true">-->
+<!--        this.$f('west').listen({-->
+<!--        onSize: function () {-->
+<!--        window.dispatchEvent(new Event('resize'));-->
+<!--        }-->
+<!--        });-->
+<!--    </script>-->
+</zk>
