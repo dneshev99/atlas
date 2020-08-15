@@ -8,17 +8,15 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bases")
-@Getter @Setter
+@Table(name = "path_points")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Base {
+public class Point {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "name")
-    private String name;
 
     @Column(name = "lat")
     private Double lat;
@@ -26,10 +24,7 @@ public class Base {
     @Column(name = "lng")
     private Double lng;
 
-    @Column(name = "capacity")
-    private Integer capacity;
-
     @ManyToOne
-    @JoinColumn(name = "region_id")
-    private Region region;
+    @JoinColumn(name = "path_id")
+    private Path path;
 }

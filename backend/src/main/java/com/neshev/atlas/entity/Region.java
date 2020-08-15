@@ -8,11 +8,12 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bases")
-@Getter @Setter
+@Table(name = "regions")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Base {
+public class Region {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -20,16 +21,10 @@ public class Base {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "lat")
-    private Double lat;
-
-    @Column(name = "lng")
-    private Double lng;
-
-    @Column(name = "capacity")
-    private Integer capacity;
+    @Column(name = "code")
+    private String code;
 
     @ManyToOne
-    @JoinColumn(name = "region_id")
-    private Region region;
+    @JoinColumn(name = "country_id")
+    private Country country;
 }
